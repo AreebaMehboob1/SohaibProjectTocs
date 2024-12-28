@@ -1,47 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
   overflow: hidden;
 }
 
 h4 {
-  font-size: 20px;
-  margin: 5px;
+  font-size: 24px;
+  margin: 10px 0;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .counter {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   text-align: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
 }
 
 .counter.hide {
-  transform: translate(-50%, -50%) scale(0);
-  animation: hide 0.2s ease-out;
+  transform: scale(0);
+  animation: hide 0.4s ease-out;
 }
 
 @keyframes hide {
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(0);
+    transform: scale(0);
   }
 }
 
 .final {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -50,7 +60,7 @@ h4 {
 
 .final.show {
   transform: translate(-50%, -50%) scale(1);
-  animation: show 0.2s ease-out;
+  animation: show 0.4s ease-out;
 }
 
 @keyframes show {
@@ -58,7 +68,7 @@ h4 {
     transform: translate(-50%, -50%) scale(0);
   }
 
-  30% {
+  50% {
     transform: translate(-50%, -50%) scale(1.4);
   }
 
@@ -68,96 +78,95 @@ h4 {
 }
 
 .nums {
-  color: #3498db;
-  font-size: 50px;
-  position: relative;
-  overflow: hidden;
-  width: 250px;
-  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 80px;
+  font-weight: bold;
+  color: #ffdb58;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
 }
 
 .nums span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(120deg);
-  transform-origin: bottom center;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .nums span.in {
-  transform: translate(-50%, -50%) rotate(0deg);
-  animation: goIn 0.5s ease-in-out;
+  opacity: 1;
+  transform: scale(1.2);
+  animation: goIn 0.6s ease-in-out;
 }
 
 .nums span.out {
-  animation: goOut 0.5s ease-in-out;
+  animation: goOut 0.6s ease-in-out;
 }
 
 @keyframes goIn {
   0% {
-    transform: translate(-50%, -50%) rotate(120deg);
+    transform: scale(0);
+    opacity: 0;
   }
 
-  30% {
-    transform: translate(-50%, -50%) rotate(-20deg);
-  }
-
-  60% {
-    transform: translate(-50%, -50%) rotate(10deg);
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: scale(1.2);
+    opacity: 1;
   }
 }
 
 @keyframes goOut {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  60% {
-    transform: translate(-50%, -50%) rotate(20deg);
+    transform: scale(1.2);
+    opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -50%) rotate(-120deg);
+    transform: scale(0);
+    opacity: 0;
   }
 }
 
-#replay{
-  background-color: #3498db;
-  border-radius: 3px;
+#replay {
+  background: #ffdb58;
   border: none;
-  color: aliceblue;
-  padding: 5px;
-  text-align: center;
-  display: inline-block;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
 }
 
-#replay span{
-  cursor: pointer;
-  display: inline-block;
+#replay:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+#replay span {
   position: relative;
-  transition: 0.3s;
+  display: inline-block;
 }
 
-#replay span:after{
+#replay span:after {
   content: '\00bb';
   position: absolute;
-  opacity: 0;
-  top: 0;
   right: -20px;
-  transition: 0.5s;
+  opacity: 0;
+  transition: opacity 0.3s, right 0.3s;
 }
 
-#replay:hover span{
-  padding-right: 25px;
-}
-
-#replay:hover span:after{
+#replay:hover span:after {
   opacity: 1;
   right: 0;
 }
